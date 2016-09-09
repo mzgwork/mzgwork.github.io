@@ -1469,6 +1469,10 @@
 .fadeInUp {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
+
+  opacity: 0;
+  -webkit-transform: translateY(400px);
+  transform: translateY(400px);
 }
 
 @-webkit-keyframes fadeInUpBig {
@@ -3337,4 +3341,16 @@
 .slideOutUp {
   -webkit-animation-name: slideOutUp;
   animation-name: slideOutUp;
+}
+.bounceInDown.go {
+  -webkit-animation-name: bounceInDown;
+  animation-name: bounceInDown;
+}
+.fadeInUp.go {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+.bounceIn.go {
+  -webkit-animation-name: bounceIn;
+  animation-name: bounceIn;
 }

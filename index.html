@@ -13,59 +13,69 @@
     <![endif]-->
     <link rel="stylesheet" href="css/common.css"/>
     <link rel="stylesheet" href="css/home.css"/>
-    <link rel="stylesheet" href="css/animate.css"/>
+    <link rel="stylesheet" href="css/animations.css"/>
 </head>
 <body  id="myScrollspy">
-<!--导航begin-->
+    <!--导航begin-->
 
-<nav class="navbar my-navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".my-navbar-scrollspy">
-                <span class="sr-only">前端小白</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand">前端小白</a>
+    <nav class="navbar my-navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".my-navbar-scrollspy">
+                    <span class="sr-only">前端小白</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">前端小白</a>
+            </div>
+            <div class="collapse navbar-collapse my-navbar-scrollspy">
+                <ul class="nav my-navbar-nav">
+                    <li class="active"><a href="#index">回到首页</a></li>
+                    <li ><a href="#about">个人简介</a></li>
+                    <li ><a href="#project">项目展示</a></li>
+                    <li ><a href="#skill">技能展示</a></li>
+                    <li ><a href="#contact">联系方式</a></li>
+                </ul>
+            </div>
+            <!--  <div class="collapse navbar-collapse my-navbar-scrollspy">
+                 <ul class="nav nav-pills my-navbar-nav" role="tablist">
+                  <li role="presentation" class="active"><a href="#index">回到首页</a></li>
+                  <li role="presentation"><a href="#about">个人简介</a></li>
+                  <li role="presentation"><a href="#project">项目展示</a></li>
+                  <li role="presentation"><a href="#skill">技能展示</a></li>
+                  <li role="presentation"><a href="#contact">联系方式</a></li>
+                </ul> 
+            </div> -->
+            
         </div>
-        <div class="collapse navbar-collapse my-navbar-scrollspy">
-            <ul class="nav my-navbar-nav">
-                <li class="active"><a href="#index">回到首页</a></li>
-                <li ><a href="#about">个人简介</a></li>
-                <li ><a href="#project">项目展示</a></li>
-                <li ><a href="#skill">技能展示</a></li>
-                <li ><a href="#contact">联系方式</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<div data-spy="scroll" data-target="#myScrollspy" data-offset="0" class="my-content">
-    <!--首页banner begin-->
-    <div class="index" id="index">
-        <section class="hero" id="intro">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-right navicon">
-                        <a id="nav-toggle" class="nav_slide_button" href="#"><span></span></a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2 text-center inner">
-                        <div class="animatedParent">
-                            <h1 class="animated fadeInDown">一个前端小白的<b class="font-yel">自述</b></h1>
-                            <p class="animated fadeInUp">爱生活 . 爱探索</p>
+    </nav>
+    <div data-spy="scroll" data-target="#myScrollspy" data-offset="0" class="my-content">
+        <!--首页banner begin-->
+        <div class="index" id="index">
+            <section class="hero" id="intro">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-right navicon">
+                            <a id="nav-toggle" class="nav_slide_button" href="#"><span></span></a>
                         </div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 text-center inner">
+                            <div class="animatedParent">
+                                <h1 class="animated fadeInDown go">一个前端小白的<b class="font-yel">自述</b></h1>
+                                <p class="animated fadeInUp go">爱生活 . 爱探索</p>
+                            </div>
+                        </div>
+                    </div>
 
-            </div>
-        </section>
-    </div>
-    <!--首页banner end-->
-    <div class="about" id="about">
-       <!--个人简介begin-->
-        <div class="container marginbot-50">
+                </div>
+            </section>
+        </div>
+        <!--首页banner end-->
+        <div class="about" id="about">
+         <!--个人简介begin-->
+         <div class="container marginbot-50">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class="animatedParent">
@@ -102,7 +112,7 @@
 
             </div>
         </div>
-       <!--个人简介end-->
+        <!--个人简介end-->
     </div>
     <!--项目简介begin-->
     <div class="project" id="project">
@@ -115,39 +125,39 @@
             <div class="project-list-wrap">
                 <ul class="nav nav-tabs-parent" role="tablist">
                     <li role="presentation" class="active"><a href="#all" role="tab" data-toggle="tab"
-                                                              aria-expanded="true">所有项目</a></li>
-                    <li role="presentation" class=""><a href="#conpany" role="tab" data-toggle="tab"
-                                                        aria-expanded="false">企业站</a></li>
-                    <li role="presentation" class=""><a href="#portal" role="tab" data-toggle="tab"
-                                                        aria-expanded="false">门户站</a></li>
-                    <li role="presentation"><a href="#commerce" role="tab" data-toggle="tab">电商网站</a></li>
-                    <li role="presentation"><a href="#other" role="tab" data-toggle="tab">其他类型</a></li>
-                </ul>
+                      aria-expanded="true">所有项目</a></li>
+                      <li role="presentation" class=""><a href="#conpany" role="tab" data-toggle="tab"
+                        aria-expanded="false">企业站</a></li>
+                        <li role="presentation" class=""><a href="#portal" role="tab" data-toggle="tab"
+                            aria-expanded="false">门户站</a></li>
+                            <li role="presentation"><a href="#commerce" role="tab" data-toggle="tab">电商网站</a></li>
+                            <li role="presentation"><a href="#other" role="tab" data-toggle="tab">其他类型</a></li>
+                        </ul>
 
-                <div class="tab-content">
-                    <!--全部项目begin-->
-                    <div role="tabpanel" class="tab-pane active" id="all">
-                        <div class="container">
-                            <div class="row animatedParent">
-                                <div class="col-sm-12 col-md-12 col-lg-12">
-                                    <div class="row gallery-item">
-                                        <div class="col-md-3 animated fadeInUp">
-                                            <a href="img/works/1.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
-                                                <img src="./images/project/p4.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">杭州意合工业品设计</h3>
-                                                    <p>技术：html,css,jQuery,fullpage</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 animated fadeInUp slow">
-                                            <a href="img/works/2.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
+                        <div class="tab-content">
+                            <!--全部项目begin-->
+                            <div role="tabpanel" class="tab-pane active" id="all">
+                                <div class="container">
+                                    <div class="row animatedParent">
+                                        <div class="col-sm-12 col-md-12 col-lg-12 m_b_20">
+                                            <div class="row gallery-item">
+                                                <div class="col-md-3 animated fadeInUp m_b_20">
+                                                    <a href="img/works/1.jpg" title="This is an image title"
+                                                    data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+                                                    class="project-list-img">
+                                                    <img src="./images/project/p4.jpg" class="img-responsive" alt="img">
+                                                    <!--mask-->
+                                                    <div class="mask">
+                                                        <h3 class="tag">杭州意合工业品设计</h3>
+                                                        <p>技术：html,css,jQuery,fullpage</p>
+                                                    </div>
+                                                    <!--mask-->
+                                                </a>
+                                            </div>
+                                            <div class="col-md-3 animated fadeInUp slow m_b_20">
+                                                <a href="img/works/2.jpg" title="This is an image title"
+                                                data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+                                                class="project-list-img">
                                                 <img src="./images/project/p2.jpg" class="img-responsive" alt="img">
                                                 <!--mask-->
                                                 <div class="mask">
@@ -157,349 +167,349 @@
                                                 <!--mask-->
                                             </a>
                                         </div>
-                                        <div class="col-md-3 animated fadeInUp slower">
+                                        <div class="col-md-3 animated fadeInUp slower m_b_20">
                                             <a href="img/works/3.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
-                                                <img src="./images/project/p7.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">杭州灵颖纺织有限公司</h3>
-                                                    <p>技术：html,css,jQuery,fullpage</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 animated fadeInUp">
-                                            <a href="img/works/4.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
-                                                <img src="./images/project/p6.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">杭州蓝康生物科技有限公司</h3>
-                                                    <p>技术：html,css,jQuery,fullpage</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
+                                            data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+                                            class="project-list-img">
+                                            <img src="./images/project/p7.jpg" class="img-responsive" alt="img">
+                                            <!--mask-->
+                                            <div class="mask ">
+                                                <h3 class="tag">杭州灵颖纺织有限公司</h3>
+                                                <p>技术：html,css,jQuery,fullpage</p>
+                                            </div>
+                                            <!--mask-->
+                                        </a>
                                     </div>
-
+                                    <div class="col-md-3 animated fadeInUp m_b_20">
+                                        <a href="img/works/4.jpg" title="This is an image title"
+                                        data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+                                        class="project-list-img">
+                                        <img src="./images/project/p6.jpg" class="img-responsive" alt="img">
+                                        <!--mask-->
+                                        <div class="mask">
+                                            <h3 class="tag">杭州蓝康生物科技有限公司</h3>
+                                            <p>技术：html,css,jQuery,fullpage</p>
+                                        </div>
+                                        <!--mask-->
+                                    </a>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
-                    <!--全部项目end-->
-                    <!--企业站begin-->
-                    <div role="tabpanel" class="tab-pane" id="conpany">
-                        <div class="container">
-                            <div class="row animatedParent">
-                                <div class="col-sm-12 col-md-12 col-lg-12">
-                                    <div class="row gallery-item">
-                                        <div class="col-md-3 animated fadeInUp">
-                                            <a href="img/works/1.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
-                                                <img src="./images/project/p7.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">杭州灵颖纺织有限公司</h3>
-                                                    <p>html,css,jQuery,fullpage</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 animated fadeInUp slow">
-                                            <a href="img/works/2.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
-                                                <img src="./images/project/p4.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">杭州意合工业品设计</h3>
-                                                    <p>技术：html,css,jQuery,fullpage</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 animated fadeInUp slower">
-                                            <a href="img/works/3.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
-                                                <img src="./images/project/p15.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">缘河交友</h3>
-                                                    <p>技术：html,css,jQuery,ajax</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 animated fadeInUp">
-                                            <a href="img/works/4.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
-                                                <img src="./images/project/p11.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">杭州亚希安防技术有限公司</h3>
-                                                    <p>技术：html,css,jQuery</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
+                </div>
+
+            </div>
+            <!--全部项目end-->
+            <!--企业站begin-->
+            <div role="tabpanel" class="tab-pane" id="conpany">
+                <div class="container">
+                    <div class="row animatedParent">
+                        <div class="col-sm-12 col-md-12 col-lg-12 m_b_20">
+                            <div class="row gallery-item">
+                                <div class="col-md-3 animated fadeInUp m_b_20">
+                                    <a href="img/works/1.jpg" title="This is an image title"
+                                    data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+                                    class="project-list-img">
+                                    <img src="./images/project/p7.jpg" class="img-responsive" alt="img">
+                                    <!--mask-->
+                                    <div class="mask">
+                                        <h3 class="tag">杭州灵颖纺织有限公司</h3>
+                                        <p>html,css,jQuery,fullpage</p>
                                     </div>
-
-                                </div>
+                                    <!--mask-->
+                                </a>
                             </div>
-                        </div>
-                    </div>
-                    <!--企业站end-->
-                    <!--门户begin-->
-                    <div role="tabpanel" class="tab-pane" id="portal">
-                        <div class="container">
-                            <div class="row animatedParent">
-                                <div class="col-sm-12 col-md-12 col-lg-12">
-                                    <div class="row gallery-item">
-                                        <div class="col-md-3 animated fadeInUp">
-                                            <a href="img/works/1.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
-                                                <img src="./images/project/p5.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">雾霾生存手册</h3>
-                                                    <p>技术：html,css,jQuery,ajax</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 animated fadeInUp slow">
-                                            <a href="img/works/2.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
-                                                <img src="./images/project/p14.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">钓天下</h3>
-                                                    <p>技术：jQuery,ajax,video.js,fullpage</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 animated fadeInUp slower">
-                                            <a href="img/works/3.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
-                                                <img src="./images/project/p9.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">金麟律师事务所</h3>
-                                                    <p>技术：jQuery,ajax,video.js</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 animated fadeInUp">
-                                            <a href="img/works/4.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
-                                                <img src="./images/project/p3.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">万科工艺品</h3>
-                                                    <p>技术：html,css,jQuery,fullpage,video.js</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
-                                    </div>
-
+                            <div class="col-md-3 animated fadeInUp slow m_b_20">
+                                <a href="img/works/2.jpg" title="This is an image title"
+                                data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+                                class="project-list-img">
+                                <img src="./images/project/p4.jpg" class="img-responsive" alt="img">
+                                <!--mask-->
+                                <div class="mask">
+                                    <h3 class="tag">杭州意合工业品设计</h3>
+                                    <p>技术：html,css,jQuery,fullpage</p>
                                 </div>
-                            </div>
+                                <!--mask-->
+                            </a>
                         </div>
-                    </div>
-                    <!--门户end-->
-                    <!--电商begin-->
-                    <div role="tabpanel" class="tab-pane" id="commerce">
-                        <div class="container">
-                            <div class="row animatedParent">
-                                <div class="col-sm-12 col-md-12 col-lg-12">
-                                    <div class="row gallery-item">
-                                        <div class="col-md-3 animated fadeInUp">
-                                            <a href="img/works/1.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
-                                                <img src="./images/project/p12.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">亮点电子商务</h3>
-                                                    <p>技术：html,css,jQuery,ajax,fullpage</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 animated fadeInUp slow">
-                                            <a href="img/works/2.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
-                                                <img src="./images/project/p8.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">咸阳商铺</h3>
-                                                    <p>技术：html,css,jQuery,ajax,fullpage</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 animated fadeInUp slower">
-                                            <a href="img/works/3.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
-                                                <img src="./images/project/p1.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">咸阳商铺</h3>
-                                                    <p>技术：html,css,jQuery,ajax,fullpage</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 animated fadeInUp">
-                                            <a href="img/works/4.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
-                                                <img src="./images/project/p16.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">耶娃贸易</h3>
-                                                    <p>技术：html,css,jQuery,ajax</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </div>
+                        <div class="col-md-3 animated fadeInUp slower m_b_20">
+                            <a href="img/works/3.jpg" title="This is an image title"
+                            data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+                            class="project-list-img">
+                            <img src="./images/project/p15.jpg" class="img-responsive" alt="img">
+                            <!--mask-->
+                            <div class="mask">
+                                <h3 class="tag">缘河交友</h3>
+                                <p>技术：html,css,jQuery,ajax</p>
                             </div>
-                        </div>
+                            <!--mask-->
+                        </a>
                     </div>
-                    <!--电商end-->
-                    <!--其他begin-->
-                    <div role="tabpanel" class="tab-pane" id="other">
-                        <div class="container">
-                            <div class="row animatedParent">
-                                <div class="col-sm-12 col-md-12 col-lg-12">
-                                    <div class="row gallery-item">
-                                        <div class="col-md-3 animated fadeInUp">
-                                            <a href="img/works/1.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
-                                                <img src="./images/project/p13.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">四川省钓鱼运动协会</h3>
-                                                    <p>技术：html,css,jQuery</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 animated fadeInUp slow">
-                                            <a href="img/works/2.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
-                                                <img src="./images/project/p2.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">37游天下</h3>
-                                                    <p>技术：html,css,jQuery,fullpage</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 animated fadeInUp slower">
-                                            <a href="img/works/3.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
-                                                <img src="./images/project/p10.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">VC法语培训</h3>
-                                                    <p>技术：html,css,jQuery,ajax</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 animated fadeInUp">
-                                            <a href="img/works/4.jpg" title="This is an image title"
-                                               data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                               class="project-list-img">
-                                                <img src="./images/project/p4.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">杭州意合工业品设计</h3>
-                                                    <p>技术：html,css,jQuery,fullpage</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
+                    <div class="col-md-3 animated fadeInUp m_b_20">
+                        <a href="img/works/4.jpg" title="This is an image title"
+                        data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+                        class="project-list-img">
+                        <img src="./images/project/p11.jpg" class="img-responsive" alt="img">
+                        <!--mask-->
+                        <div class="mask">
+                            <h3 class="tag">杭州亚希安防技术有限公司</h3>
+                            <p>技术：html,css,jQuery</p>
                         </div>
-                    </div>
-                    <!--其他end-->
-
+                        <!--mask-->
+                    </a>
                 </div>
             </div>
-            <!--项目列表end-->
+
         </div>
     </div>
-    <!--项目简介end-->
-    <!--职业技能begin-->
-    <div class="skill" >
-        <div class="container marginbot-50" id="skill">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div>
-                        <div class="heading">
-                            <h2>专业技能</h2>
-                            <p>skills and show</p>
+</div>
+</div>
+<!--企业站end-->
+<!--门户begin-->
+<div role="tabpanel" class="tab-pane" id="portal">
+    <div class="container">
+        <div class="row animatedParent">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="row gallery-item">
+                    <div class="col-md-3 animated fadeInUp m_b_20">
+                        <a href="img/works/1.jpg" title="This is an image title"
+                        data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+                        class="project-list-img">
+                        <img src="./images/project/p5.jpg" class="img-responsive" alt="img">
+                        <!--mask-->
+                        <div class="mask">
+                            <h3 class="tag">雾霾生存手册</h3>
+                            <p>技术：html,css,jQuery,ajax</p>
                         </div>
+                        <!--mask-->
+                    </a>
+                </div>
+                <div class="col-md-3 animated fadeInUp slow m_b_20" >
+                    <a href="img/works/2.jpg" title="This is an image title"
+                    data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+                    class="project-list-img">
+                    <img src="./images/project/p14.jpg" class="img-responsive" alt="img">
+                    <!--mask-->
+                    <div class="mask">
+                        <h3 class="tag">钓天下</h3>
+                        <p>技术：jQuery,ajax,video.js,fullpage</p>
+                    </div>
+                    <!--mask-->
+                </a>
+            </div>
+            <div class="col-md-3 animated fadeInUp slower m_b_20">
+                <a href="img/works/3.jpg" title="This is an image title"
+                data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+                class="project-list-img">
+                <img src="./images/project/p9.jpg" class="img-responsive" alt="img">
+                <!--mask-->
+                <div class="mask">
+                    <h3 class="tag">金麟律师事务所</h3>
+                    <p>技术：jQuery,ajax,video.js</p>
+                </div>
+                <!--mask-->
+            </a>
+        </div>
+        <div class="col-md-3 animated fadeInUp m_b_20">
+            <a href="img/works/4.jpg" title="This is an image title"
+            data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+            class="project-list-img">
+            <img src="./images/project/p3.jpg" class="img-responsive" alt="img">
+            <!--mask-->
+            <div class="mask">
+                <h3 class="tag">万科工艺品</h3>
+                <p>技术：html,css,jQuery,fullpage,video.js</p>
+            </div>
+            <!--mask-->
+        </a>
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<!--门户end-->
+<!--电商begin-->
+<div role="tabpanel" class="tab-pane" id="commerce">
+    <div class="container">
+        <div class="row animatedParent">
+            <div class="col-sm-12 col-md-12 col-lg-12 ">
+                <div class="row gallery-item">
+                    <div class="col-md-3 animated fadeInUp m_b_20 ">
+                        <a href="img/works/1.jpg" title="This is an image title"
+                        data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+                        class="project-list-img">
+                        <img src="./images/project/p12.jpg" class="img-responsive" alt="img">
+                        <!--mask-->
+                        <div class="mask">
+                            <h3 class="tag">亮点电子商务</h3>
+                            <p>技术：html,css,jQuery,ajax,fullpage</p>
+                        </div>
+                        <!--mask-->
+                    </a>
+                </div>
+                <div class="col-md-3 animated fadeInUp slow m_b_20">
+                    <a href="img/works/2.jpg" title="This is an image title"
+                    data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+                    class="project-list-img">
+                    <img src="./images/project/p8.jpg" class="img-responsive" alt="img">
+                    <!--mask-->
+                    <div class="mask">
+                        <h3 class="tag">咸阳商铺</h3>
+                        <p>技术：html,css,jQuery,ajax,fullpage</p>
+                    </div>
+                    <!--mask-->
+                </a>
+            </div>
+            <div class="col-md-3 animated fadeInUp slower m_b_20">
+                <a href="img/works/3.jpg" title="This is an image title"
+                data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+                class="project-list-img">
+                <img src="./images/project/p1.jpg" class="img-responsive" alt="img">
+                <!--mask-->
+                <div class="mask">
+                    <h3 class="tag">咸阳商铺</h3>
+                    <p>技术：html,css,jQuery,ajax,fullpage</p>
+                </div>
+                <!--mask-->
+            </a>
+        </div>
+        <div class="col-md-3 animated fadeInUp m_b_20">
+            <a href="img/works/4.jpg" title="This is an image title"
+            data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+            class="project-list-img">
+            <img src="./images/project/p16.jpg" class="img-responsive" alt="img">
+            <!--mask-->
+            <div class="mask">
+                <h3 class="tag">耶娃贸易</h3>
+                <p>技术：html,css,jQuery,ajax</p>
+            </div>
+            <!--mask-->
+        </a>
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<!--电商end-->
+<!--其他begin-->
+<div role="tabpanel" class="tab-pane" id="other">
+    <div class="container">
+        <div class="row animatedParent">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="row gallery-item">
+                    <div class="col-md-3 animated fadeInUp m_b_20">
+                        <a href="img/works/1.jpg" title="This is an image title"
+                        data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+                        class="project-list-img">
+                        <img src="./images/project/p13.jpg" class="img-responsive" alt="img">
+                        <!--mask-->
+                        <div class="mask">
+                            <h3 class="tag">四川省钓鱼运动协会</h3>
+                            <p>技术：html,css,jQuery</p>
+                        </div>
+                        <!--mask-->
+                    </a>
+                </div>
+                <div class="col-md-3 animated fadeInUp slow m_b_20">
+                    <a href="img/works/2.jpg" title="This is an image title"
+                    data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+                    class="project-list-img">
+                    <img src="./images/project/p2.jpg" class="img-responsive" alt="img">
+                    <!--mask-->
+                    <div class="mask">
+                        <h3 class="tag">37游天下</h3>
+                        <p>技术：html,css,jQuery,fullpage</p>
+                    </div>
+                    <!--mask-->
+                </a>
+            </div>
+            <div class="col-md-3 animated fadeInUp slower m_b_20">
+                <a href="img/works/3.jpg" title="This is an image title"
+                data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+                class="project-list-img">
+                <img src="./images/project/p10.jpg" class="img-responsive" alt="img">
+                <!--mask-->
+                <div class="mask">
+                    <h3 class="tag">VC法语培训</h3>
+                    <p>技术：html,css,jQuery,ajax</p>
+                </div>
+                <!--mask-->
+            </a>
+        </div>
+        <div class="col-md-3 animated fadeInUp m_b_20   ">
+            <a href="img/works/4.jpg" title="This is an image title"
+            data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
+            class="project-list-img">
+            <img src="./images/project/p4.jpg" class="img-responsive" alt="img">
+            <!--mask-->
+            <div class="mask">
+                <h3 class="tag">杭州意合工业品设计</h3>
+                <p>技术：html,css,jQuery,fullpage</p>
+            </div>
+            <!--mask-->
+        </a>
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<!--其他end-->
+
+</div>
+</div>
+<!--项目列表end-->
+</div>
+</div>
+<!--项目简介end-->
+<!--职业技能begin-->
+<div class="skill" >
+    <div class="container marginbot-50" id="skill">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div>
+                    <div class="heading">
+                        <h2>专业技能</h2>
+                        <p>skills and show</p>
                     </div>
                 </div>
             </div>
-
         </div>
 
-        <div class="text-center">
-            <div class="container">
-                <div class="row animatedParent">
+    </div>
 
-                    <!--技能列表begin-->
-                    <div class="container">
-                        <div class="row animatedParent">
-                            <div class="col-xs-6 col-sm-4 col-md-4">
-                                <div class="animated rotateInDownLeft">
-                                    <div class="service-box">
-                                        <div class="service-icon">
-                                            <span class="fa fa-2x myself_icon_cp"></span>
-                                        </div>
-                                        <div class="service-desc">
-                                            <h5>关于PC端</h5>
-                                            <div class="divider-header"></div>
-                                            <p class="text-left">
-                                                1、熟练使用html/css,能精准还原设计图效果，熟悉 W3C标准，对标签语义化、代码重用性、代码模块化有深入了解，并拥有丰富的页面布局经验。<br>
-                                                2、能熟练使用原生JavaScript，熟练各种DOM操作。对原型，闭包，jQuery的封装原理亦有了解。熟练使用常见的jQuery插件<br>
-                                                3、能使用 Ajax 、json 完成前后端数据交互，并完成页面渲染工作。
+    <div class="text-center">
+        <div class="container">
+            <div class="row">
+
+                <!--技能列表begin-->
+                <div class="container">
+                    <div class="row animatedParent">
+                        <div class="col-xs-12 col-sm-4 col-md-4 m_b_20">
+                            <div class="animated rotateInDownLeft">
+                                <div class="service-box">
+                                    <div class="service-icon">
+                                        <span class="fa fa-2x myself_icon_cp"></span>
+                                    </div>
+                                    <div class="service-desc">
+                                        <h5>关于PC端</h5>
+                                        <div class="divider-header"></div>
+                                        <p class="text-left">
+                                            1、熟练使用html/css,能精准还原设计图效果，熟悉 W3C标准，对标签语义化、代码重用性、代码模块化有深入了解，并拥有丰富的页面布局经验。<br>
+                                            2、能熟练使用原生JavaScript，熟练各种DOM操作。对原型，闭包，jQuery的封装原理亦有了解。熟练使用常见的jQuery插件<br>
+                                            3、能使用 Ajax 、json 完成前后端数据交互，并完成页面渲染工作。
 
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-sm-4 col-md-4">
+                            <div class="col-xs-12 col-sm-4 col-md-4 m_b_20">
                                 <div class="animated rotateInDownLeft slow">
                                     <div class="service-box">
                                         <div class="service-icon">
@@ -519,7 +529,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-6 col-sm-4 col-md-4">
+                            <div class="col-xs-12 col-sm-4 col-md-4 m_b_20">
                                 <div class="animated rotateInDownLeft slower">
                                     <div class="service-box">
                                         <div class="service-icon">
@@ -551,23 +561,22 @@
     <!--联系方式begin-->
     <div class="section contact"  id="contact">
         <div class="container marginbot-50">
-            <div class="row">
-                <div class="col-md-8 col-lg-offset-2">
-                    <div class="animatedParent">
-                        <div class="section-heading text-center">
-                            <h2 class="h-bold">联系方式</h2>
-                            <div class="divider-header"></div>
-                        </div>
-                    </div>
-                </div>
+            <!--标题begin-->
+            <div class="heading">
+                <h2>联系方式</h2>
+                <p>contact information</p>
             </div>
+            <!--标题end-->
             <div class="row">
                 <!--联系方式列表begin-->
                 <div class="col-md-12 contact-list-info">
                     <ul>
-                        <li class="col-md-4"><i class="address"></i>现居地：浙江杭州</li>
-                        <li class="col-md-4"><i class="tel"></i>电话：18657130613</li>
-                        <li class="col-md-4"><i class="email"></i>邮箱：mzggwork@163.com</li>
+                        <li class="col-md-1 hidden-sm hidden-xs"><i class="address"></i></li>
+                        <li class="col-md-3 col-sm-3">现居地：浙江杭州</li>
+                        <li class="col-md-1 hidden-sm hidden-xs"><i class="tel"></i></li>
+                        <li class="col-md-3 col-sm-3">电话：18657130613</li>
+                        <li class="col-md-1 hidden-sm hidden-xs"><i class="email"></i></li>
+                        <li class="col-md-3 col-sm-3">邮箱：mzggwork@163.com</li>
                     </ul>
                 </div>
                 <!--联系方式列表end-->
@@ -577,50 +586,51 @@
                 <div class="col-md-2 col-lg-offset-5">
                     <a href="./resumehtml/resume.html"  target=_blank class="btn btn-skin btn-lg btn-block" id="btnContactUs">
                         详细简历</a>
+                    </div>
                 </div>
-            </div>
-            <!--发送邮箱end-->
+                <!--发送邮箱end-->
 
-        </div>
-
-        <div class="container">
-
-            <div class="row marginbot-80">
-                <div class="col-md-8 col-md-offset-2">
-
-                </div>
             </div>
 
+            <div class="container">
 
+                <div class="row marginbot-80">
+                    <div class="col-md-8 col-md-offset-2">
+
+                    </div>
+                </div>
+
+
+            </div>
         </div>
+        <!--联系方式end-->
     </div>
-    <!--联系方式end-->
-</div>
 
-<!--导航end-->
+    <!--导航end-->
 
 
-<script src="lib/jquery/jquery.min.js"></script>
-<script src="lib/bootstrap/js/bootstrap.min.js"></script>
-<script src="js/common.js"></script>
-<script>
-   $(function () {
-       removeSection = function (e) {
-           $(e).parents(".section").remove();
-           $('[data-spy="scroll"]').each(function () {
-               var $spy = $(this).scrollspy('refresh')
-           })
-       }
-       $('#myScrollspy').scrollspy();
-       $('#myScrollspy').on('activate.bs.scrollspy', function () {
-           console.log(111)
-       })
-
-       jQuery(document).ready(function() {
-           Layout.init();
-       });
-   })
-</script>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <!--<script src="js/common.js"></script>-->
+    <script src="js/change.js"></script>
+    <script>
+      $(function () {
+////          removeSection = function (e) {
+////              $(e).parents(".section").remove();
+////              $('[data-spy="scroll"]').each(function () {
+////                  var $spy = $(this).scrollspy('refresh')
+////              })
+////          }
+////          $('#myScrollspy').scrollspy();
+////          $('#myScrollspy').on('activate.bs.scrollspy', function () {
+////              console.log(111)
+////          })
+//
+//          jQuery(document).ready(function() {
+//              Layout.init();
+//          });
+      })
+ </script>
 
 </body>
 </html>
