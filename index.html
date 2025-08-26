@@ -16,10 +16,45 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 20px;
             overflow-x: hidden;
+        }
+
+        .navigation {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50px;
+            padding: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: transparent;
+            color: #666;
+        }
+
+        .nav-button.active {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .nav-button:hover:not(.active) {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
         }
 
         .container {
@@ -147,7 +182,7 @@
             }
         }
 
-        .spin-button {
+        .spin-button, .order-button {
             background: linear-gradient(45deg, #ff6b6b, #feca57);
             color: white;
             border: none;
@@ -160,19 +195,20 @@
             box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-top: 10px;
         }
 
-        .spin-button:hover {
+        .spin-button:hover, .order-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 12px 25px rgba(255, 107, 107, 0.5);
         }
 
-        .spin-button:active {
+        .spin-button:active, .order-button:active {
             transform: translateY(0);
             box-shadow: 0 6px 15px rgba(255, 107, 107, 0.4);
         }
 
-        .spin-button:disabled {
+        .spin-button:disabled, .order-button:disabled {
             background: #ccc;
             cursor: not-allowed;
             transform: none;
@@ -236,6 +272,168 @@
             opacity: 0.9;
         }
 
+        /* 自助选择模式样式 */
+        .selection-mode {
+            display: none;
+        }
+
+        .selection-mode.active {
+            display: block;
+        }
+
+        .drinks-container {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 30px;
+            padding-right: 8px;
+        }
+
+        .drinks-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .drinks-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .drinks-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 107, 107, 0.6);
+            border-radius: 3px;
+        }
+
+        .drinks-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 107, 107, 0.8);
+        }
+
+        .drinks-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .drink-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            display: flex;
+            align-items: center;
+            text-align: left;
+        }
+
+        .drink-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .drink-item.selected {
+            border-color: #ff6b6b;
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            color: white;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        .drink-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .drink-info {
+            flex: 1;
+        }
+
+        .drink-item .drink-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .drink-item .drink-description {
+            font-size: 12px;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        .drink-item.selected .drink-description {
+            opacity: 0.9;
+        }
+
+        .selected-info {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            color: white;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .selected-info.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .selected-info img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid white;
+        }
+
+        .selected-info .selected-details {
+            flex: 1;
+        }
+
+        .selected-info h3 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+        }
+
+        .selected-info p {
+            margin: 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .order-success {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            border-radius: 15px;
+            padding: 20px;
+            color: white;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .order-success.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .order-success h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .order-success p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
         .decorative-stars {
             position: absolute;
             width: 100%;
@@ -282,6 +480,10 @@
                 opacity: 0;
             }
         }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -294,26 +496,64 @@
 
     <div class="particles" id="particles"></div>
 
+    <!-- 导航栏 -->
+    <div class="navigation">
+        <button class="nav-button active" onclick="switchMode('random')">🎲 随机</button>
+        <button class="nav-button" onclick="switchMode('selection')">🛒 自助选择</button>
+    </div>
+
     <div class="container">
-        <h1 class="title">🎰 今天喝虾米</h1>
-        <p class="subtitle">点击按钮开始摇奖，看看你能获得什么惊喜！</p>
-        
-        <div class="slot-machine">
-            <div class="reel-container">
-                <div class="reel" id="reel">
-                    <!-- 奖品项目将由JavaScript动态生成 -->
-                </div>
-            </div>
+        <!-- 随机模式 -->
+        <div id="randomMode" class="random-mode">
+            <h1 class="title">🎰 今天喝虾米</h1>
+            <p class="subtitle">点击按钮开始摇奖，看看你能获得什么惊喜！</p>
             
-            <button class="spin-button" id="spinButton" onclick="spin()">
-                🎲 开始摇奖
-            </button>
+            <div class="slot-machine">
+                <div class="reel-container">
+                    <div class="reel" id="reel">
+                        <!-- 奖品项目将由JavaScript动态生成 -->
+                    </div>
+                </div>
+                
+                <button class="spin-button" id="spinButton" onclick="spin()">
+                    🎲 开始摇奖
+                </button>
+            </div>
+
+            <div class="result-display" id="resultDisplay">
+                <div class="result-title">🎉 恭喜获得</div>
+                <div class="result-item" id="resultItem"></div>
+                <div class="result-description" id="resultDescription"></div>
+            </div>
         </div>
 
-        <div class="result-display" id="resultDisplay">
-            <div class="result-title">🎉 恭喜获得</div>
-            <div class="result-item" id="resultItem"></div>
-            <div class="result-description" id="resultDescription"></div>
+        <!-- 自助选择模式 -->
+        <div id="selectionMode" class="selection-mode">
+            <h1 class="title">🛒 自助点餐</h1>
+            <p class="subtitle">选择你心仪的饮品，立即下单！</p>
+            
+            <div class="drinks-container">
+                <div class="drinks-list" id="drinksList">
+                    <!-- 饮品列表将由JavaScript动态生成 -->
+                </div>
+            </div>
+
+            <div class="selected-info" id="selectedInfo">
+                <img id="selectedDrinkImage" src="" alt="" onerror="this.style.display='none';">
+                <div class="selected-details">
+                    <h3>已选择：<span id="selectedDrinkName"></span></h3>
+                    <p><span id="selectedDrinkDesc"></span></p>
+                </div>
+            </div>
+
+            <button class="order-button" id="orderButton" onclick="placeOrder()" disabled>
+                🛍️ 立即下单
+            </button>
+
+            <div class="order-success" id="orderSuccess">
+                <h3>🎉 下单成功！</h3>
+                <p>您的外卖正在路上，请耐心等待～</p>
+            </div>
         </div>
     </div>
 
@@ -323,74 +563,182 @@
             { 
                 image: 'https://pic1.imgdb.cn/item/68ad0faa58cb8da5c84d5be4.jpg', 
                 name: '古茗', 
-                description: '恭喜获得古茗一杯！' 
+                description: '恭喜获得古茗一杯！',
+                slogan: '你是我心中最甜的那杯茶',
             },
             { 
                 image: 'https://pic1.imgdb.cn/item/68ad0fab58cb8da5c84d5be5.jpg', 
                 name: '一点点', 
-                description: '恭喜获得一点点一杯！' 
+                description: '恭喜获得一点点一杯！',
+                slogan: '一点点甜，一点点爱，都是你',
             },
             { 
                 image: 'https://pic1.imgdb.cn/item/68ad0fab58cb8da5c84d5be6.jpg', 
                 name: '茶颜悦色', 
-                description: '恭喜获得茶颜悦色一杯！' 
+                description: '恭喜获得茶颜悦色一杯！',
+                slogan: '遇见你，是我最美的茶颜悦色',
             },
             { 
                 image: 'https://pic1.imgdb.cn/item/68ad0fab58cb8da5c84d5be9.jpg', 
                 name: '蜜雪冰城', 
-                description: '恭喜获得蜜雪冰城一杯！' 
+                description: '恭喜获得蜜雪冰城一杯！',
+                slogan: '你的笑容比蜜雪还要甜',
             },
             { 
                 image: 'https://pic1.imgdb.cn/item/68ad0fab58cb8da5c84d5be8.jpg', 
                 name: '喜茶', 
-                description: '恭喜获得喜茶一杯！' 
+                description: '恭喜获得喜茶一杯！',
+                slogan: '有你的每一天都是喜茶',
             },
             { 
                 image: 'https://pic1.imgdb.cn/item/68ad0fab58cb8da5c84d5be7.jpg', 
                 name: 'COCO', 
-                description: '恭喜获得COCO一杯！' 
+                description: '恭喜获得COCO一杯！',
+                slogan: '你是我心中的COCO，甜蜜满分',
             },
             { 
                 image: 'https://pic1.imgdb.cn/item/68ad117d58cb8da5c84d5c3e.jpg', 
                 name: '不认识的', 
-                description: '恭喜获得不认识的！' 
+                description: '恭喜获得不认识的！',
+                slogan: '即使不认识，也想给你温暖',
             },
             { 
                 image: 'https://pic1.imgdb.cn/item/68ad117d58cb8da5c84d5c3b.jpg', 
-                name: 'COCO', 
-                description: '恭喜获得COCO一杯！' 
+                name: 'COCO都可', 
+                description: '恭喜获得COCO都可一杯！',
+                slogan: '都可都可，只要是你都好',
             },
             { 
                 image: 'https://pic1.imgdb.cn/item/68ad117d58cb8da5c84d5c3d.jpg', 
                 name: '茉莉奶白', 
-                description: '恭喜获得茉莉奶白一杯！' 
+                description: '恭喜获得茉莉奶白一杯！',
+                slogan: '像茉莉一样纯净，像奶白一样温柔',
             },
             { 
                 image: 'https://pic1.imgdb.cn/item/68ad117d58cb8da5c84d5c3c.jpg', 
                 name: '不认识的2', 
-                description: '恭喜获得不认识的2！' 
-            },
-            
+                description: '恭喜获得不认识的2！',
+                slogan: '遇见你，就是最美的意外',
+            }
         ];
 
         let isSpinning = false;
+        let currentMode = 'random';
+        let selectedDrink = null;
 
+        // 模式切换
+        function switchMode(mode) {
+            currentMode = mode;
+            const randomMode = document.getElementById('randomMode');
+            const selectionMode = document.getElementById('selectionMode');
+            const navButtons = document.querySelectorAll('.nav-button');
+            
+            // 更新导航按钮状态
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            if (mode === 'random') {
+                navButtons[0].classList.add('active');
+                randomMode.style.display = 'block';
+                selectionMode.classList.remove('active');
+            } else {
+                navButtons[1].classList.add('active');
+                randomMode.style.display = 'none';
+                selectionMode.classList.add('active');
+                // 延迟初始化，确保元素已显示
+                setTimeout(() => {
+                    initSelectionMode();
+                }, 50);
+            }
+        }
+
+        // 初始化自助选择模式
+        function initSelectionMode() {
+            const drinksList = document.getElementById('drinksList');
+            if (!drinksList) return; // 如果元素不存在则退出
+            
+            drinksList.innerHTML = '';
+            
+            prizes.forEach((drink, index) => {
+                const drinkItem = document.createElement('div');
+                drinkItem.className = 'drink-item';
+                drinkItem.onclick = () => selectDrink(index);
+                
+                drinkItem.innerHTML = `
+                    <img src="${drink.image}" alt="${drink.name}" onerror="this.style.display='none'; this.nextElementSibling.style.marginLeft='0';">
+                    <div class="drink-info">
+                        <div class="drink-name">${drink.name}</div>
+                        <div class="drink-description">${drink.slogan}</div>
+                    </div>
+                `;
+                
+                drinksList.appendChild(drinkItem);
+            });
+        }
+
+        // 选择饮品
+        function selectDrink(index) {
+            selectedDrink = prizes[index];
+            
+            // 更新选中状态
+            document.querySelectorAll('.drink-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            document.querySelectorAll('.drink-item')[index].classList.add('selected');
+            
+            // 显示选中信息
+            const selectedInfo = document.getElementById('selectedInfo');
+            const selectedDrinkImage = document.getElementById('selectedDrinkImage');
+            const selectedDrinkName = document.getElementById('selectedDrinkName');
+            const selectedDrinkDesc = document.getElementById('selectedDrinkDesc');
+            const orderButton = document.getElementById('orderButton');
+            
+            selectedDrinkImage.src = selectedDrink.image;
+            selectedDrinkImage.alt = selectedDrink.name;
+            selectedDrinkImage.onerror = function() {
+                this.style.display = 'none';
+            };
+            selectedDrinkName.textContent = selectedDrink.name;
+            selectedDrinkDesc.textContent = selectedDrink.description;
+            selectedInfo.classList.add('show');
+            orderButton.disabled = false;
+        }
+
+        // 下单
+        function placeOrder() {
+            if (!selectedDrink) return;
+            
+            const orderButton = document.getElementById('orderButton');
+            const orderSuccess = document.getElementById('orderSuccess');
+            
+            orderButton.disabled = true;
+            orderButton.textContent = '🛍️ 下单中...';
+            
+            setTimeout(() => {
+                orderSuccess.classList.add('show');
+                orderButton.textContent = '🛍️ 再次下单';
+                orderButton.disabled = false;
+                
+                // 3秒后隐藏成功提示
+                setTimeout(() => {
+                    orderSuccess.classList.remove('show');
+                }, 3000);
+            }, 1000);
+        }
+
+        // 以下是原来的随机模式代码
         function createSpinningReelItems() {
             const reel = document.getElementById('reel');
             reel.innerHTML = '';
-            reel.style.transform = 'translateY(0)'; // 重置位置
+            reel.style.transform = 'translateY(0)';
             
-            // 创建更多项目以支持完整的滚动效果（需要足够的项目来覆盖滚动距离）
             for (let i = 0; i < 30; i++) {
                 const item = document.createElement('div');
                 item.className = 'reel-item';
-                item.style.position = 'relative'; // 滚动时使用相对定位
+                item.style.position = 'relative';
                 const img = document.createElement('img');
                 const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
                 img.src = randomPrize.image;
                 img.alt = randomPrize.name;
                 img.onerror = function() {
-                    // 如果图片加载失败，显示占位符
                     this.style.display = 'none';
                     item.style.background = '#f0f0f0';
                     item.innerHTML = '<div style="color: #999; font-size: 16px;">图片</div>';
@@ -404,7 +752,6 @@
             const reel = document.getElementById('reel');
             reel.innerHTML = '';
             
-            // 初始化时只创建一个居中显示的随机项目
             const item = document.createElement('div');
             item.className = 'reel-item initial-item';
             item.style.position = 'absolute';
@@ -418,7 +765,6 @@
             img.src = randomPrize.image;
             img.alt = randomPrize.name;
             img.onerror = function() {
-                // 如果图片加载失败，显示占位符
                 this.style.display = 'none';
                 item.style.background = '#f0f0f0';
                 item.innerHTML = '<div style="color: #999; font-size: 16px;">奖品</div>';
@@ -435,39 +781,28 @@
             const reel = document.getElementById('reel');
             const resultDisplay = document.getElementById('resultDisplay');
             
-            // 先确定中奖结果
             const selectedPrize = prizes[Math.floor(Math.random() * prizes.length)];
             
-            // 隐藏之前的结果
             resultDisplay.classList.remove('show');
             
-            // 禁用按钮
             spinButton.disabled = true;
             spinButton.textContent = '🎲 摇奖中...';
             
-            // 重新创建转盘项目，确保有足够的随机内容进行滚动
             createSpinningReelItems();
             
-            // 添加旋转动画
             reel.classList.add('spinning');
             
-            // 创建粒子效果
             createParticles();
             
-            // 3秒后显示结果（匹配新的动画时长）
             setTimeout(() => {
-                // 移除旋转动画
                 reel.classList.remove('spinning');
                 
-                // 重置转盘位置并显示中奖项目
                 resetReelToWinningPosition(selectedPrize);
                 
-                // 延迟一点再显示结果，让用户先看到转盘停止的结果
                 setTimeout(() => {
                     showResult(selectedPrize);
                 }, 300);
                 
-                // 恢复按钮
                 spinButton.disabled = false;
                 spinButton.textContent = '🎲 再次摇奖';
                 isSpinning = false;
@@ -478,11 +813,9 @@
         function resetReelToWinningPosition(winningPrize) {
             const reel = document.getElementById('reel');
             
-            // 清空转盘并重新生成，只显示中奖项目
             reel.innerHTML = '';
-            reel.style.transform = 'translateY(0)'; // 重置位置
+            reel.style.transform = 'translateY(0)';
             
-            // 只添加中奖项目，占满整个摇奖区域
             const winningItem = document.createElement('div');
             winningItem.className = 'reel-item winning-item';
             const winningImg = document.createElement('img');
@@ -502,12 +835,10 @@
             const resultItem = document.getElementById('resultItem');
             const resultDescription = document.getElementById('resultDescription');
             
-            // 创建图片元素
             const img = document.createElement('img');
             img.src = prize.image;
             img.alt = prize.name;
             img.onerror = function() {
-                // 如果图片加载失败，显示文字占位符
                 resultItem.innerHTML = '<div style="font-size: 60px; color: #666;">🎁</div>';
             };
             
@@ -518,7 +849,6 @@
             setTimeout(() => {
                 resultDisplay.classList.add('show');
                 
-                // 如果是超级大奖，添加更多特效
                 if (prize.name === '超级大奖') {
                     createConfetti();
                 }
@@ -539,7 +869,6 @@
                 
                 particlesContainer.appendChild(particle);
                 
-                // 3秒后移除粒子
                 setTimeout(() => {
                     if (particle.parentNode) {
                         particle.parentNode.removeChild(particle);
@@ -550,7 +879,7 @@
 
         function createConfetti() {
             const particlesContainer = document.getElementById('particles');
-            const confettiEmojis = ['🎊', '🎉', '👑', '🏆', '⭐'];
+            const confettiEmojis = ['🎊', '🎉', '🏆', '🏆', '⭐'];
             
             for (let i = 0; i < 30; i++) {
                 const confetti = document.createElement('div');
@@ -574,6 +903,7 @@
         // 页面加载时初始化
         window.onload = function() {
             createReelItems();
+            // 不在页面加载时初始化自助选择模式，而是在切换到该模式时再初始化
         };
     </script>
 </body>
