@@ -1,636 +1,580 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
-    <title>前端小白的主页</title>
-    <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <!--<link href="lib/bootstrap/css/agency.css" rel="stylesheet">-->
-    <!--[if lt IE 9]>
-    <script src="lib/html5shiv/html5shiv.min.js"></script>
-    <script src="lib/respond/respond.js"></script>
-    <![endif]-->
-    <link rel="stylesheet" href="css/common.css"/>
-    <link rel="stylesheet" href="css/home.css"/>
-    <link rel="stylesheet" href="css/animations.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一二老虎机</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            backdrop-filter: blur(10px);
+        }
+
+        .title {
+            color: #333;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .slot-machine {
+            background: linear-gradient(145deg, #e6e6e6, #ffffff);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 
+                inset 8px 8px 16px #d9d9d9,
+                inset -8px -8px 16px #ffffff;
+        }
+
+        .reel-container {
+            background: #000;
+            border-radius: 10px;
+            padding: 0;
+            margin-bottom: 20px;
+            height: 150px;
+            overflow: hidden;
+            position: relative;
+            border: 3px solid #ffd700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .reel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .reel.spinning {
+            animation: smoothSpin 3s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        @keyframes smoothSpin {
+            0% { 
+                transform: translateY(0);
+                animation-timing-function: ease-in;
+            }
+            20% { 
+                transform: translateY(-1400px);
+                animation-timing-function: linear;
+            }
+            80% { 
+                transform: translateY(-2800px);
+                animation-timing-function: linear;
+            }
+            100% { 
+                transform: translateY(-3000px);
+                animation-timing-function: ease-out;
+            }
+        }
+
+        .reel-item {
+            width: 120px;
+            height: 120px;
+            margin: 15px 0;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .reel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .winning-item {
+            width: 120px !important;
+            height: 120px !important;
+            margin: 0 !important;
+            border: 4px solid #ffd700;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 8px 16px rgba(0, 0, 0, 0.3);
+            animation: winningPulse 2s infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes winningPulse {
+            0%, 100% { 
+                box-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 8px 16px rgba(0, 0, 0, 0.3);
+            }
+            50% { 
+                box-shadow: 0 0 40px rgba(255, 215, 0, 1), 0 8px 20px rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        .spin-button {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .spin-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(255, 107, 107, 0.5);
+        }
+
+        .spin-button:active {
+            transform: translateY(0);
+            box-shadow: 0 6px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .spin-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .result-display {
+            margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            color: white;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .result-display.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .result-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px auto;
+            animation: bounce 1s ease;
+        }
+
+        .result-item img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 60%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            80% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .result-description {
+            font-size: 16px;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        .decorative-stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            color: #ffd700;
+            font-size: 20px;
+            animation: twinkle 2s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .particle {
+            position: absolute;
+            font-size: 20px;
+            animation: fall 3s linear forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
-<body  id="myScrollspy">
-    <!--导航begin-->
+<body>
+    <div class="decorative-stars">
+        <div class="star" style="top: 10%; left: 10%;">⭐</div>
+        <div class="star" style="top: 20%; right: 15%; animation-delay: 0.5s;">✨</div>
+        <div class="star" style="bottom: 30%; left: 20%; animation-delay: 1s;">⭐</div>
+        <div class="star" style="bottom: 15%; right: 25%; animation-delay: 1.5s;">✨</div>
+    </div>
 
-    <nav class="navbar my-navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".my-navbar-scrollspy">
-                    <span class="sr-only">前端小白</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand">前端小白</a>
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <h1 class="title">🎰 今天喝虾米</h1>
+        <p class="subtitle">点击按钮开始摇奖，看看你能获得什么惊喜！</p>
+        
+        <div class="slot-machine">
+            <div class="reel-container">
+                <div class="reel" id="reel">
+                    <!-- 奖品项目将由JavaScript动态生成 -->
+                </div>
             </div>
-            <div class="collapse navbar-collapse my-navbar-scrollspy">
-                <ul class="nav my-navbar-nav">
-                    <li class="active"><a href="#index">回到首页</a></li>
-                    <li ><a href="#about">个人简介</a></li>
-                    <li ><a href="#project">项目展示</a></li>
-                    <li ><a href="#skill">技能展示</a></li>
-                    <li ><a href="#contact">联系方式</a></li>
-                </ul>
-            </div>
-            <!--  <div class="collapse navbar-collapse my-navbar-scrollspy">
-                 <ul class="nav nav-pills my-navbar-nav" role="tablist">
-                  <li role="presentation" class="active"><a href="#index">回到首页</a></li>
-                  <li role="presentation"><a href="#about">个人简介</a></li>
-                  <li role="presentation"><a href="#project">项目展示</a></li>
-                  <li role="presentation"><a href="#skill">技能展示</a></li>
-                  <li role="presentation"><a href="#contact">联系方式</a></li>
-                </ul> 
-            </div> -->
             
+            <button class="spin-button" id="spinButton" onclick="spin()">
+                🎲 开始摇奖
+            </button>
         </div>
-    </nav>
-    <div data-spy="scroll" data-target="#myScrollspy" data-offset="0" class="my-content">
-        <!--首页banner begin-->
-        <div class="index" id="index">
-            <section class="hero" id="intro">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 text-right navicon">
-                            <a id="nav-toggle" class="nav_slide_button" href="#"><span></span></a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2 text-center inner">
-                            <div class="animatedParent">
-                                <h1 class="animated fadeInDown go">一个前端小白的<b class="font-yel">自述</b></h1>
-                                <p class="animated fadeInUp go">爱生活 . 爱探索</p>
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
-            </section>
-        </div>
-        <!--首页banner end-->
-        <div class="about" id="about">
-         <!--个人简介begin-->
-         <div class="container marginbot-50">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="animatedParent">
-                        <div class="section-heading text-center">
-                            <h2 class="h-bold">个人简介</h2>
-                            <div class="divider-header"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 animatedParent">
-                    <div class="text-center">
-                        <p>
-                            熟练使用html/css,能精准还原设计图效果，熟悉 W3C标准，对标签语义化、代码重用性、代码模块化有深入了解，并拥有丰富的页面布局经验。
-                            能熟练使用原生JavaScript，熟练各种BOM,DOM操作。对原型，闭包，jQuery的封装原理亦有了解。
-                            熟练使用jQuery，zepto实现多终端页面制作，熟练使用bootstrap进行响应式页面的开发。
-                            熟练使用fullPage.js，video.js等常用的js插件。
-
-                        </p>
-                        <p>
-                            会使用自动化构建工具gulp，以及git
-                            了解http协议，能使用 Ajax 、json 完成前后端数据交互，并完成页面渲染工作。
-                            了解node.js，能阅读PHP代码。
-                            了解网站优化方案，有提升用户体验的意识。
-                        </p>
-
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-        <!--个人简介end-->
-    </div>
-    <!--项目简介begin-->
-    <div class="project" id="project">
-        <div class="container">
-            <div class="heading">
-                <h2>项目展示</h2>
-                <p>Project presentation</p>
-            </div>
-            <!--项目列表begin-->
-            <div class="project-list-wrap">
-                <ul class="nav nav-tabs-parent" role="tablist">
-                    <li role="presentation" class="active"><a href="#all" role="tab" data-toggle="tab"
-                      aria-expanded="true">所有项目</a></li>
-                      <li role="presentation" class=""><a href="#conpany" role="tab" data-toggle="tab"
-                        aria-expanded="false">企业站</a></li>
-                        <li role="presentation" class=""><a href="#portal" role="tab" data-toggle="tab"
-                            aria-expanded="false">门户站</a></li>
-                            <li role="presentation"><a href="#commerce" role="tab" data-toggle="tab">电商网站</a></li>
-                            <li role="presentation"><a href="#other" role="tab" data-toggle="tab">其他类型</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                            <!--全部项目begin-->
-                            <div role="tabpanel" class="tab-pane active" id="all">
-                                <div class="container">
-                                    <div class="row animatedParent">
-                                        <div class="col-sm-12 col-md-12 col-lg-12 m_b_20">
-                                            <div class="row gallery-item">
-                                                <div class="col-md-3 animated fadeInUp m_b_20">
-                                                    <a href="img/works/1.jpg" title="This is an image title"
-                                                    data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                                    class="project-list-img">
-                                                    <img src="./images/project/p4.jpg" class="img-responsive" alt="img">
-                                                    <!--mask-->
-                                                    <div class="mask">
-                                                        <h3 class="tag">杭州意合工业品设计</h3>
-                                                        <p>技术：html,css,jQuery,fullpage</p>
-                                                    </div>
-                                                    <!--mask-->
-                                                </a>
-                                            </div>
-                                            <div class="col-md-3 animated fadeInUp slow m_b_20">
-                                                <a href="img/works/2.jpg" title="This is an image title"
-                                                data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                                class="project-list-img">
-                                                <img src="./images/project/p2.jpg" class="img-responsive" alt="img">
-                                                <!--mask-->
-                                                <div class="mask">
-                                                    <h3 class="tag">37游天下</h3>
-                                                    <p>技术：html,css,jQuery,ajax</p>
-                                                </div>
-                                                <!--mask-->
-                                            </a>
-                                        </div>
-                                        <div class="col-md-3 animated fadeInUp slower m_b_20">
-                                            <a href="img/works/3.jpg" title="This is an image title"
-                                            data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                            class="project-list-img">
-                                            <img src="./images/project/p7.jpg" class="img-responsive" alt="img">
-                                            <!--mask-->
-                                            <div class="mask ">
-                                                <h3 class="tag">杭州灵颖纺织有限公司</h3>
-                                                <p>技术：html,css,jQuery,fullpage</p>
-                                            </div>
-                                            <!--mask-->
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3 animated fadeInUp m_b_20">
-                                        <a href="img/works/4.jpg" title="This is an image title"
-                                        data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                        class="project-list-img">
-                                        <img src="./images/project/p6.jpg" class="img-responsive" alt="img">
-                                        <!--mask-->
-                                        <div class="mask">
-                                            <h3 class="tag">杭州蓝康生物科技有限公司</h3>
-                                            <p>技术：html,css,jQuery,fullpage</p>
-                                        </div>
-                                        <!--mask-->
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <!--全部项目end-->
-            <!--企业站begin-->
-            <div role="tabpanel" class="tab-pane" id="conpany">
-                <div class="container">
-                    <div class="row animatedParent">
-                        <div class="col-sm-12 col-md-12 col-lg-12 m_b_20">
-                            <div class="row gallery-item">
-                                <div class="col-md-3 animated fadeInUp m_b_20">
-                                    <a href="img/works/1.jpg" title="This is an image title"
-                                    data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                    class="project-list-img">
-                                    <img src="./images/project/p7.jpg" class="img-responsive" alt="img">
-                                    <!--mask-->
-                                    <div class="mask">
-                                        <h3 class="tag">杭州灵颖纺织有限公司</h3>
-                                        <p>html,css,jQuery,fullpage</p>
-                                    </div>
-                                    <!--mask-->
-                                </a>
-                            </div>
-                            <div class="col-md-3 animated fadeInUp slow m_b_20">
-                                <a href="img/works/2.jpg" title="This is an image title"
-                                data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                                class="project-list-img">
-                                <img src="./images/project/p4.jpg" class="img-responsive" alt="img">
-                                <!--mask-->
-                                <div class="mask">
-                                    <h3 class="tag">杭州意合工业品设计</h3>
-                                    <p>技术：html,css,jQuery,fullpage</p>
-                                </div>
-                                <!--mask-->
-                            </a>
-                        </div>
-                        <div class="col-md-3 animated fadeInUp slower m_b_20">
-                            <a href="img/works/3.jpg" title="This is an image title"
-                            data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                            class="project-list-img">
-                            <img src="./images/project/p15.jpg" class="img-responsive" alt="img">
-                            <!--mask-->
-                            <div class="mask">
-                                <h3 class="tag">缘河交友</h3>
-                                <p>技术：html,css,jQuery,ajax</p>
-                            </div>
-                            <!--mask-->
-                        </a>
-                    </div>
-                    <div class="col-md-3 animated fadeInUp m_b_20">
-                        <a href="img/works/4.jpg" title="This is an image title"
-                        data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                        class="project-list-img">
-                        <img src="./images/project/p11.jpg" class="img-responsive" alt="img">
-                        <!--mask-->
-                        <div class="mask">
-                            <h3 class="tag">杭州亚希安防技术有限公司</h3>
-                            <p>技术：html,css,jQuery</p>
-                        </div>
-                        <!--mask-->
-                    </a>
-                </div>
-            </div>
-
+        <div class="result-display" id="resultDisplay">
+            <div class="result-title">🎉 恭喜获得</div>
+            <div class="result-item" id="resultItem"></div>
+            <div class="result-description" id="resultDescription"></div>
         </div>
     </div>
-</div>
-</div>
-<!--企业站end-->
-<!--门户begin-->
-<div role="tabpanel" class="tab-pane" id="portal">
-    <div class="container">
-        <div class="row animatedParent">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="row gallery-item">
-                    <div class="col-md-3 animated fadeInUp m_b_20">
-                        <a href="img/works/1.jpg" title="This is an image title"
-                        data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                        class="project-list-img">
-                        <img src="./images/project/p5.jpg" class="img-responsive" alt="img">
-                        <!--mask-->
-                        <div class="mask">
-                            <h3 class="tag">雾霾生存手册</h3>
-                            <p>技术：html,css,jQuery,ajax</p>
-                        </div>
-                        <!--mask-->
-                    </a>
-                </div>
-                <div class="col-md-3 animated fadeInUp slow m_b_20" >
-                    <a href="img/works/2.jpg" title="This is an image title"
-                    data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                    class="project-list-img">
-                    <img src="./images/project/p14.jpg" class="img-responsive" alt="img">
-                    <!--mask-->
-                    <div class="mask">
-                        <h3 class="tag">钓天下</h3>
-                        <p>技术：jQuery,ajax,video.js,fullpage</p>
-                    </div>
-                    <!--mask-->
-                </a>
-            </div>
-            <div class="col-md-3 animated fadeInUp slower m_b_20">
-                <a href="img/works/3.jpg" title="This is an image title"
-                data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                class="project-list-img">
-                <img src="./images/project/p9.jpg" class="img-responsive" alt="img">
-                <!--mask-->
-                <div class="mask">
-                    <h3 class="tag">金麟律师事务所</h3>
-                    <p>技术：jQuery,ajax,video.js</p>
-                </div>
-                <!--mask-->
-            </a>
-        </div>
-        <div class="col-md-3 animated fadeInUp m_b_20">
-            <a href="img/works/4.jpg" title="This is an image title"
-            data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-            class="project-list-img">
-            <img src="./images/project/p3.jpg" class="img-responsive" alt="img">
-            <!--mask-->
-            <div class="mask">
-                <h3 class="tag">万科工艺品</h3>
-                <p>技术：html,css,jQuery,fullpage,video.js</p>
-            </div>
-            <!--mask-->
-        </a>
-    </div>
-</div>
 
-</div>
-</div>
-</div>
-</div>
-<!--门户end-->
-<!--电商begin-->
-<div role="tabpanel" class="tab-pane" id="commerce">
-    <div class="container">
-        <div class="row animatedParent">
-            <div class="col-sm-12 col-md-12 col-lg-12 ">
-                <div class="row gallery-item">
-                    <div class="col-md-3 animated fadeInUp m_b_20 ">
-                        <a href="img/works/1.jpg" title="This is an image title"
-                        data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                        class="project-list-img">
-                        <img src="./images/project/p12.jpg" class="img-responsive" alt="img">
-                        <!--mask-->
-                        <div class="mask">
-                            <h3 class="tag">亮点电子商务</h3>
-                            <p>技术：html,css,jQuery,ajax,fullpage</p>
-                        </div>
-                        <!--mask-->
-                    </a>
-                </div>
-                <div class="col-md-3 animated fadeInUp slow m_b_20">
-                    <a href="img/works/2.jpg" title="This is an image title"
-                    data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                    class="project-list-img">
-                    <img src="./images/project/p8.jpg" class="img-responsive" alt="img">
-                    <!--mask-->
-                    <div class="mask">
-                        <h3 class="tag">咸阳商铺</h3>
-                        <p>技术：html,css,jQuery,ajax,fullpage</p>
-                    </div>
-                    <!--mask-->
-                </a>
-            </div>
-            <div class="col-md-3 animated fadeInUp slower m_b_20">
-                <a href="img/works/3.jpg" title="This is an image title"
-                data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                class="project-list-img">
-                <img src="./images/project/p1.jpg" class="img-responsive" alt="img">
-                <!--mask-->
-                <div class="mask">
-                    <h3 class="tag">雾霾生存手册</h3>
-                    <p>技术：html,css,jQuery,ajax,fullpage</p>
-                </div>
-                <!--mask-->
-            </a>
-        </div>
-        <div class="col-md-3 animated fadeInUp m_b_20">
-            <a href="img/works/4.jpg" title="This is an image title"
-            data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-            class="project-list-img">
-            <img src="./images/project/p16.jpg" class="img-responsive" alt="img">
-            <!--mask-->
-            <div class="mask">
-                <h3 class="tag">耶娃贸易</h3>
-                <p>技术：html,css,jQuery,ajax</p>
-            </div>
-            <!--mask-->
-        </a>
-    </div>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-<!--电商end-->
-<!--其他begin-->
-<div role="tabpanel" class="tab-pane" id="other">
-    <div class="container">
-        <div class="row animatedParent">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="row gallery-item">
-                    <div class="col-md-3 animated fadeInUp m_b_20">
-                        <a href="img/works/1.jpg" title="This is an image title"
-                        data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                        class="project-list-img">
-                        <img src="./images/project/p13.jpg" class="img-responsive" alt="img">
-                        <!--mask-->
-                        <div class="mask">
-                            <h3 class="tag">四川省钓鱼运动协会</h3>
-                            <p>技术：html,css,jQuery</p>
-                        </div>
-                        <!--mask-->
-                    </a>
-                </div>
-                <div class="col-md-3 animated fadeInUp slow m_b_20">
-                    <a href="img/works/2.jpg" title="This is an image title"
-                    data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                    class="project-list-img">
-                    <img src="./images/project/p2.jpg" class="img-responsive" alt="img">
-                    <!--mask-->
-                    <div class="mask">
-                        <h3 class="tag">37游天下</h3>
-                        <p>技术：html,css,jQuery,fullpage</p>
-                    </div>
-                    <!--mask-->
-                </a>
-            </div>
-            <div class="col-md-3 animated fadeInUp slower m_b_20">
-                <a href="img/works/3.jpg" title="This is an image title"
-                data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-                class="project-list-img">
-                <img src="./images/project/p10.jpg" class="img-responsive" alt="img">
-                <!--mask-->
-                <div class="mask">
-                    <h3 class="tag">VC法语培训</h3>
-                    <p>技术：html,css,jQuery,ajax</p>
-                </div>
-                <!--mask-->
-            </a>
-        </div>
-        <div class="col-md-3 animated fadeInUp m_b_20   ">
-            <a href="img/works/4.jpg" title="This is an image title"
-            data-lightbox-gallery="gallery1" data-lightbox-hidpi="img/works/1@2x.jpg"
-            class="project-list-img">
-            <img src="./images/project/p4.jpg" class="img-responsive" alt="img">
-            <!--mask-->
-            <div class="mask">
-                <h3 class="tag">杭州意合工业品设计</h3>
-                <p>技术：html,css,jQuery,fullpage</p>
-            </div>
-            <!--mask-->
-        </a>
-    </div>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-<!--其他end-->
-
-</div>
-</div>
-<!--项目列表end-->
-</div>
-</div>
-<!--项目简介end-->
-<!--职业技能begin-->
-<div class="skill" >
-    <div class="container marginbot-50" id="skill">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <div>
-                    <div class="heading">
-                        <h2>专业技能</h2>
-                        <p>skills and show</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="text-center">
-        <div class="container">
-            <div class="row">
-
-                <!--技能列表begin-->
-                <div class="container">
-                    <div class="row animatedParent">
-                        <div class="col-xs-12 col-sm-4 col-md-4 m_b_20">
-                            <div class="animated rotateInDownLeft">
-                                <div class="service-box">
-                                    <div class="service-icon">
-                                        <span class="fa fa-2x myself_icon_cp"></span>
-                                    </div>
-                                    <div class="service-desc">
-                                        <h5>关于PC端</h5>
-                                        <div class="divider-header"></div>
-                                        <p class="text-left">
-                                            1、熟练使用html/css,能精准还原设计图效果，熟悉 W3C标准，对标签语义化、代码重用性、代码模块化有深入了解，并拥有丰富的页面布局经验。<br>
-                                            2、能熟练使用原生JavaScript，熟练各种DOM操作。对原型，闭包，jQuery的封装原理亦有了解。熟练使用常见的jQuery插件<br>
-                                            3、能使用 Ajax 、json 完成前后端数据交互，并完成页面渲染工作。
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-4 col-md-4 m_b_20">
-                                <div class="animated rotateInDownLeft slow">
-                                    <div class="service-box">
-                                        <div class="service-icon">
-                                            <span class="fa fa-2x my_icon_system myself_icon_phone"></span>
-                                        </div>
-                                        <div class="service-desc">
-                                            <h5>关于移动端</h5>
-                                            <div class="divider-header"></div>
-                                            <p>
-                                                1、 熟练使用jQuery，zepto实现多终端页面制作。<br>
-                                                2、 熟练使用bootstrap进行响应式页面的开发。<br>
-                                                3、 熟练使用html5，css3完成常见的页面动画效果制作。<br>
-                                                4、 可以使用canvas绘制简单的常见图像，了解常见绘图控件echarts
-                                            </p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-4 col-md-4 m_b_20">
-                                <div class="animated rotateInDownLeft slower">
-                                    <div class="service-box">
-                                        <div class="service-icon">
-                                            <span class="fa fa-2x myself_icon_other"></span>
-                                        </div>
-                                        <div class="service-desc">
-                                            <h5>其他部分</h5>
-                                            <div class="divider-header"></div>
-                                            <p>
-                                                1、了解node.js，能阅读简单的PHP代码<br>
-                                                2、会使用常见的包管理工具<br>
-                                                3、对angular有一定了解<br>
-                                                4、有设计功底，熟练使用各种常见设计工具
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!--技能列表end-->
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--职业技能end-->
-    <!--联系方式begin-->
-    <div class="section contact"  id="contact">
-        <div class="container marginbot-50">
-            <!--标题begin-->
-            <div class="heading">
-                <h2>联系方式</h2>
-                <p>contact information</p>
-            </div>
-            <!--标题end-->
-            <div class="row">
-                <!--联系方式列表begin-->
-                <div class="col-md-12 contact-list-info">
-                    <ul>
-                        <li class="col-md-1 hidden-sm hidden-xs"><i class="address"></i></li>
-                        <li class="col-md-3 col-sm-3">现居地：浙江杭州</li>
-                        <li class="col-md-1 hidden-sm hidden-xs"><i class="tel"></i></li>
-                        <li class="col-md-3 col-sm-3">电话：18657130613</li>
-                        <li class="col-md-1 hidden-sm hidden-xs"><i class="email"></i></li>
-                        <li class="col-md-3 col-sm-3">邮箱：mzggwork@163.com</li>
-                    </ul>
-                </div>
-                <!--联系方式列表end-->
-            </div>
-            <!--发送邮箱begin-->
-            <div class="row margintop-50">
-                <div class="col-md-2 col-lg-offset-5">
-                    <a href="./resumehtml/resume.html"  target=_blank class="btn btn-skin btn-lg btn-block" id="btnContactUs">
-                        详细简历</a>
-                    </div>
-                </div>
-                <!--发送邮箱end-->
-
-            </div>
-
-            <div class="container">
-
-                <div class="row marginbot-80">
-                    <div class="col-md-8 col-md-offset-2">
-
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-        <!--联系方式end-->
-    </div>
-
-    <!--导航end-->
-
-
-    <script src="lib/jquery/jquery.min.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-    <!--<script src="js/common.js"></script>-->
-    <script src="js/change.js"></script>
     <script>
-      $(function () {
-////          removeSection = function (e) {
-////              $(e).parents(".section").remove();
-////              $('[data-spy="scroll"]').each(function () {
-////                  var $spy = $(this).scrollspy('refresh')
-////              })
-////          }
-////          $('#myScrollspy').scrollspy();
-////          $('#myScrollspy').on('activate.bs.scrollspy', function () {
-////              console.log(111)
-////          })
-//
-//          jQuery(document).ready(function() {
-//              Layout.init();
-//          });
-      })
- </script>
+        // 奖品数据 - 使用用户提供的图片链接
+        const prizes = [
+            { 
+                image: 'https://pic1.imgdb.cn/item/68ad0faa58cb8da5c84d5be4.jpg', 
+                name: '古茗', 
+                description: '恭喜获得古茗一杯！' 
+            },
+            { 
+                image: 'https://pic1.imgdb.cn/item/68ad0fab58cb8da5c84d5be5.jpg', 
+                name: '一点点', 
+                description: '恭喜获得一点点一杯！' 
+            },
+            { 
+                image: 'https://pic1.imgdb.cn/item/68ad0fab58cb8da5c84d5be6.jpg', 
+                name: '茶颜悦色', 
+                description: '恭喜获得茶颜悦色一杯！' 
+            },
+            { 
+                image: 'https://pic1.imgdb.cn/item/68ad0fab58cb8da5c84d5be9.jpg', 
+                name: '蜜雪冰城', 
+                description: '恭喜获得蜜雪冰城一杯！' 
+            },
+            { 
+                image: 'https://pic1.imgdb.cn/item/68ad0fab58cb8da5c84d5be8.jpg', 
+                name: '喜茶', 
+                description: '恭喜获得喜茶一杯！' 
+            },
+            { 
+                image: 'https://pic1.imgdb.cn/item/68ad0fab58cb8da5c84d5be7.jpg', 
+                name: 'COCO', 
+                description: '恭喜获得COCO一杯！' 
+            },
+            { 
+                image: 'https://pic1.imgdb.cn/item/68ad117d58cb8da5c84d5c3e.jpg', 
+                name: '不认识的', 
+                description: '恭喜获得不认识的！' 
+            },
+            { 
+                image: 'https://pic1.imgdb.cn/item/68ad117d58cb8da5c84d5c3b.jpg', 
+                name: 'COCO', 
+                description: '恭喜获得COCO一杯！' 
+            },
+            { 
+                image: 'https://pic1.imgdb.cn/item/68ad117d58cb8da5c84d5c3d.jpg', 
+                name: '茉莉奶白', 
+                description: '恭喜获得茉莉奶白一杯！' 
+            },
+            { 
+                image: 'https://pic1.imgdb.cn/item/68ad117d58cb8da5c84d5c3c.jpg', 
+                name: '不认识的2', 
+                description: '恭喜获得不认识的2！' 
+            },
+            
+        ];
 
+        let isSpinning = false;
+
+        function createSpinningReelItems() {
+            const reel = document.getElementById('reel');
+            reel.innerHTML = '';
+            reel.style.transform = 'translateY(0)'; // 重置位置
+            
+            // 创建更多项目以支持完整的滚动效果（需要足够的项目来覆盖滚动距离）
+            for (let i = 0; i < 30; i++) {
+                const item = document.createElement('div');
+                item.className = 'reel-item';
+                item.style.position = 'relative'; // 滚动时使用相对定位
+                const img = document.createElement('img');
+                const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
+                img.src = randomPrize.image;
+                img.alt = randomPrize.name;
+                img.onerror = function() {
+                    // 如果图片加载失败，显示占位符
+                    this.style.display = 'none';
+                    item.style.background = '#f0f0f0';
+                    item.innerHTML = '<div style="color: #999; font-size: 16px;">图片</div>';
+                };
+                item.appendChild(img);
+                reel.appendChild(item);
+            }
+        }
+
+        function createReelItems() {
+            const reel = document.getElementById('reel');
+            reel.innerHTML = '';
+            
+            // 初始化时只创建一个居中显示的随机项目
+            const item = document.createElement('div');
+            item.className = 'reel-item initial-item';
+            item.style.position = 'absolute';
+            item.style.top = '50%';
+            item.style.left = '50%';
+            item.style.transform = 'translate(-50%, -50%)';
+            item.style.margin = '0';
+            
+            const img = document.createElement('img');
+            const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
+            img.src = randomPrize.image;
+            img.alt = randomPrize.name;
+            img.onerror = function() {
+                // 如果图片加载失败，显示占位符
+                this.style.display = 'none';
+                item.style.background = '#f0f0f0';
+                item.innerHTML = '<div style="color: #999; font-size: 16px;">奖品</div>';
+            };
+            item.appendChild(img);
+            reel.appendChild(item);
+        }
+
+        function spin() {
+            if (isSpinning) return;
+            
+            isSpinning = true;
+            const spinButton = document.getElementById('spinButton');
+            const reel = document.getElementById('reel');
+            const resultDisplay = document.getElementById('resultDisplay');
+            
+            // 先确定中奖结果
+            const selectedPrize = prizes[Math.floor(Math.random() * prizes.length)];
+            
+            // 隐藏之前的结果
+            resultDisplay.classList.remove('show');
+            
+            // 禁用按钮
+            spinButton.disabled = true;
+            spinButton.textContent = '🎲 摇奖中...';
+            
+            // 重新创建转盘项目，确保有足够的随机内容进行滚动
+            createSpinningReelItems();
+            
+            // 添加旋转动画
+            reel.classList.add('spinning');
+            
+            // 创建粒子效果
+            createParticles();
+            
+            // 3秒后显示结果（匹配新的动画时长）
+            setTimeout(() => {
+                // 移除旋转动画
+                reel.classList.remove('spinning');
+                
+                // 重置转盘位置并显示中奖项目
+                resetReelToWinningPosition(selectedPrize);
+                
+                // 延迟一点再显示结果，让用户先看到转盘停止的结果
+                setTimeout(() => {
+                    showResult(selectedPrize);
+                }, 300);
+                
+                // 恢复按钮
+                spinButton.disabled = false;
+                spinButton.textContent = '🎲 再次摇奖';
+                isSpinning = false;
+                
+            }, 3000);
+        }
+
+        function resetReelToWinningPosition(winningPrize) {
+            const reel = document.getElementById('reel');
+            
+            // 清空转盘并重新生成，只显示中奖项目
+            reel.innerHTML = '';
+            reel.style.transform = 'translateY(0)'; // 重置位置
+            
+            // 只添加中奖项目，占满整个摇奖区域
+            const winningItem = document.createElement('div');
+            winningItem.className = 'reel-item winning-item';
+            const winningImg = document.createElement('img');
+            winningImg.src = winningPrize.image;
+            winningImg.alt = winningPrize.name;
+            winningImg.onerror = function() {
+                this.style.display = 'none';
+                winningItem.style.background = '#f0f0f0';
+                winningItem.innerHTML = '<div style="color: #999; font-size: 20px;">中奖项目</div>';
+            };
+            winningItem.appendChild(winningImg);
+            reel.appendChild(winningItem);
+        }
+
+        function showResult(prize) {
+            const resultDisplay = document.getElementById('resultDisplay');
+            const resultItem = document.getElementById('resultItem');
+            const resultDescription = document.getElementById('resultDescription');
+            
+            // 创建图片元素
+            const img = document.createElement('img');
+            img.src = prize.image;
+            img.alt = prize.name;
+            img.onerror = function() {
+                // 如果图片加载失败，显示文字占位符
+                resultItem.innerHTML = '<div style="font-size: 60px; color: #666;">🎁</div>';
+            };
+            
+            resultItem.innerHTML = '';
+            resultItem.appendChild(img);
+            resultDescription.textContent = prize.description;
+            
+            setTimeout(() => {
+                resultDisplay.classList.add('show');
+                
+                // 如果是超级大奖，添加更多特效
+                if (prize.name === '超级大奖') {
+                    createConfetti();
+                }
+            }, 200);
+        }
+
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const emojis = ['🎊', '🎉', '⭐', '✨', '💫'];
+            
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 0.5 + 's';
+                particle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                
+                particlesContainer.appendChild(particle);
+                
+                // 3秒后移除粒子
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 3000);
+            }
+        }
+
+        function createConfetti() {
+            const particlesContainer = document.getElementById('particles');
+            const confettiEmojis = ['🎊', '🎉', '👑', '🏆', '⭐'];
+            
+            for (let i = 0; i < 30; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'particle';
+                confetti.textContent = confettiEmojis[Math.floor(Math.random() * confettiEmojis.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.animationDelay = Math.random() * 1 + 's';
+                confetti.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                confetti.style.fontSize = (Math.random() * 10 + 15) + 'px';
+                
+                particlesContainer.appendChild(confetti);
+                
+                setTimeout(() => {
+                    if (confetti.parentNode) {
+                        confetti.parentNode.removeChild(confetti);
+                    }
+                }, 4000);
+            }
+        }
+
+        // 页面加载时初始化
+        window.onload = function() {
+            createReelItems();
+        };
+    </script>
 </body>
 </html>
